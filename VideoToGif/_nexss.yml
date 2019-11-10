@@ -1,4 +1,3 @@
 name: VideoToGif
-debug: true
 files:
   - name: src/videoToGif.py

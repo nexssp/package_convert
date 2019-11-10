@@ -14,4 +14,5 @@ Languages/Technologies used for this Nexss PROGRAMMER package:
 
 ```sh
 nexss Convert/VideoToGif --file=myfile.mp4
+nexss Convert/VideoToGif --file="Diving - 347.mp4" --fps=1
 ```
