@@ -18,7 +18,7 @@ resultFilename, _ = os.path.splitext(path)
 parsedJson["resultFile"] = parsedJson["cwd"] + "/" + resultFilename + '.gif'
 
 print("Writing gif..")
-video = (VideoFileClip(parsedJson['cwd'] + "/" + path, audio=False).resize(2))
+video = (VideoFileClip(parsedJson['cwd'] + "/" + path, audio=False).resize(.2))
 
 if 'fps' not in parsedJson:
     fps = 4
@@ -29,7 +29,10 @@ if isinstance("fps", int):
     raise Exception('Attribute `fps` must be a number')
 
 # composition = CompositeVideoClip([video]).speedx(0.2)
+
+print("Writing gif..")
 video.write_gif(parsedJson["resultFile"], fps=fps, fuzz=3)
+
 
 NexssStdout = json.JSONEncoder().encode(parsedJson)
 # STDOUT
