@@ -1,0 +1,9 @@
+name: ToText
+author: Marcin Polak mapoart@gmail.com
+files:
+  - name: src/toTxt.js
+commands:
+  - name: init
+    command: scoop install xpdf-tools
+errors:
+  "pdftotext.exe": "\nOne of the Nexss Programmer packages is not initialized. \nUse command `nexss pkg init` (to make sure all are up to date) \nor You may want to install xpdf-tools manually: https://www.xpdfreader.com/download.html"
