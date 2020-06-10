@@ -11,9 +11,9 @@ function replaceExtension(filename, extension) {
   var pos = filename.lastIndexOf(".");
   return filename.substr(0, pos < 0 ? filename.length : pos) + extension;
 }
-
+const availableTypes = [".pdf"];
 if (!NexssStdout.nxsIn) {
-  nxsError("Add files to be converted");
+  nxsError("Add files to be converted: " + availableTypes.join(", "));
   process.exit(1);
 }
 
@@ -23,8 +23,20 @@ const fs = require("fs");
 let result = [];
 let exists = [];
 let errors = [];
+
 NexssStdout.nxsIn.forEach((element) => {
   const extension = path.extname(element);
+
+  if (!availableTypes.includes(extension)) {
+    nxsError(
+      "Convert/ToTxt converts these file types: " +
+        availableTypes.join(", ") +
+        ". You passed: " +
+        element
+    );
+    process.exit(1);
+  }
+
   const destination = replaceExtension(element, ".txt");
   if (!NexssStdout.convertForce && fs.existsSync(destination)) {
     exists.push(destination);
@@ -33,7 +45,7 @@ NexssStdout.nxsIn.forEach((element) => {
   switch (extension) {
     case ".pdf":
       try {
-        const res = cp.execSync(`pdftotext.exe ${element}`).toString();
+        const res = cp.execSync(`pdftotext.exe "${element}"`).toString();
         if (res) console.log(res);
         result.push(destination);
       } catch (error) {
