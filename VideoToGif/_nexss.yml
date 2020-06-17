@@ -1,3 +1,6 @@
 name: VideoToGif
 files:
   - name: src/videoToGif.py
+commands:
+  - name: init
+    command: nexss py install -r requirements.txt
