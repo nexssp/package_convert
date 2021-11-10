@@ -44,6 +44,8 @@ NexssStdout.nxsIn.forEach((element) => {
   }
   switch (extension) {
     case ".pdf":
+      // const cmdExists = cp.execSync("command -v");
+
       try {
         const res = cp.execSync(`pdftotext.exe "${element}"`).toString();
         if (res) console.log(res);
@@ -64,7 +66,11 @@ NexssStdout.nxsIn.forEach((element) => {
 });
 NexssStdout.nxsOut = result;
 if (exists.length > 0) NexssStdout.nxsOut_1 = exists;
-if (errors.length > 0) NexssStdout.nxsOut_2 = errors;
+if (errors.length > 0) {
+  NexssStdout.nxsOut_2 = errors;
+  NexssStdout.nxsStop = errors;
+  NexssStdout.nxsStopReason = "Reason: " + errors;
+}
 NexssStdout.nxsInfo = {
   nxsOut: "converted files",
   nxsOut_1: "already exists",

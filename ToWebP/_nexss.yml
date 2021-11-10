@@ -1,0 +1,11 @@
+name: toWebP
+files:
+  - name: src/toWebP.py
+input:
+  - name: file
+    validate:
+      - type: requiredOrIn
+        message: You need to pass image file to parse.
+commands:
+  - name: init
+    command: nexss py install -r requirements.txt
