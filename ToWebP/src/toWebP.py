@@ -1,12 +1,10 @@
-#  Convert/toWebP - Nexss PROGRAMMER 2.x - Python 3
+#  Convert/toWebP - Nexss PROGRAMMER 2.x
 import json
 import sys
 
 import os
 import string
 import numbers
-
-
 
 sys.path.append(os.path.join(os.getenv(
     "NEXSS_PACKAGES_PATH"), "Nexss", "Lib"))
@@ -16,10 +14,15 @@ from NexssLog import nxsInfo, nxsOk, nxsWarn, nxsError
 try:
     from PIL import Image
 except ImportError:
-    import Image
-
-def convert_to_webp(source, destination):  
-    image = Image.open(source)  # Open image
+    try:
+        import Image
+    except:
+        nxsError("Pillow is not installed. Init command wasn't run? nexss pkg init.")
+        sys.exit(1)
+        
+def convert_to_webp(source, destination, optimize = True, quality = 100):  
+    image = Image.open(source) 
+    # image = image.convert('RGB')
     image.save(destination, format="webp")  # Convert image to webp
 
     return destination
