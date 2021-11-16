@@ -1,2 +1,2 @@
-FS/Files   --_inFileTypes=.png --_inFileTypes=.jpg --_inFileTypes=.gif
+FS/Files . --_inFileTypes=.png --_inFileTypes=.jpg --_inFileTypes=.gif
 Convert/ToWebp
