@@ -17,4 +17,5 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npx @nexssp/cli Convert/ToWebP
+      - run: npx @nexssp/cli Download https://nexss.com/assets/default/images/header_logo.png
+      - run: npx @nexssp/cli Convert/ToWebP header_logo.png
