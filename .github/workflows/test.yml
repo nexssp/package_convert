@@ -1,0 +1,20 @@
+name: Nexss Convert
+
+on:
+  push:
+    branches: [workflow]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        # os: [windows-latest, windows-2019, ubuntu-latest, macos-latest, macos-10.15]
+        os: [windows-latest]
+        node-version: [16.x]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npx @nexssp/cli Convert/ToWebP
